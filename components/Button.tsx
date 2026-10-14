@@ -1,4 +1,4 @@
-import { StyleSheet, View, Pressable, Text } from 'react-native';
+import { StyleSheet, Pressable, Text } from 'react-native';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 
 type Props = {
@@ -8,51 +8,63 @@ type Props = {
 };
 
 export default function Button({ label, theme, onPress }: Props) {
-  if (theme === 'primary') {
-    return (
-      <View
-        style={[
-          styles.buttonContainer,{ borderWidth: 4, borderColor: '#ffd33d', borderRadius: 18 },
-        ]}>
-        <Pressable style={[styles.button, { backgroundColor: '#fff' }]} onPress={onPress}>
-          <FontAwesome name="picture-o" size={18} color="#25292e" style={styles.buttonIcon} />
-          <Text style={[styles.buttonLabel, { color: '#25292e' }]}>{label}</Text>
-        </Pressable>
-      </View>
-    );
-  }
-
   return (
-    <View style={styles.buttonContainer}>
-        <Pressable style={styles.button}  onPress={onPress}>
-        <Text style={styles.buttonLabel}>{label}</Text>
-      </Pressable>
-    </View>
+    <Pressable
+      accessibilityLabel={label}
+      accessibilityRole="button"
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.button,
+        theme === 'primary' ? styles.primaryButton : styles.secondaryButton,
+        pressed && styles.pressedButton,
+      ]}>
+      {theme === 'primary' && (
+        <FontAwesome name="picture-o" size={18} color="#FFFFFF" style={styles.buttonIcon} />
+      )}
+      <Text
+        numberOfLines={1}
+        style={[
+          styles.buttonLabel,
+          theme === 'primary' ? styles.primaryLabel : styles.secondaryLabel,
+        ]}>
+        {label}
+      </Text>
+    </Pressable>
   );
 }
 
 const styles = StyleSheet.create({
-  buttonContainer: {
-    width: 320,
-    height: 68,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 3,
-  },
   button: {
-    borderRadius: 10,
-    width: '100%',
-    height: '100%',
+    alignSelf: 'stretch',
+    height: 56,
+    flexShrink: 0,
+    marginVertical: 6,
+    paddingHorizontal: 16,
+    borderRadius: 14,
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
+  },
+  primaryButton: {
+    backgroundColor: '#357CA5',
+  },
+  secondaryButton: {
+    backgroundColor: '#E2E4E9',
+  },
+  pressedButton: {
+    opacity: 0.8,
   },
   buttonIcon: {
     paddingRight: 8,
   },
   buttonLabel: {
-    color: '#fff',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  primaryLabel: {
+    color: '#FFFFFF',
+  },
+  secondaryLabel: {
+    color: '#111111',
   },
 });

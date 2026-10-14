@@ -1,4 +1,4 @@
-import { View, StyleSheet, ImageSourcePropType, Platform } from "react-native";
+import { View, Text, StyleSheet, ImageSourcePropType, Platform } from "react-native";
 import ImageViewer from "../../../components/ImageViewer";
 import Button from "../../../components/Button";
 import * as ImagePicker from "expo-image-picker";
@@ -104,22 +104,39 @@ export default function Index() {
         {showAppOptions ? (
           <View style={styles.optionsContainer}>
             <View style={styles.optionsRow}>
-              <IconButton icon="refresh" label="Reset" onPress={onReset} />
+              <IconButton
+                icon="refresh"
+                label="Restablecer"
+                onPress={onReset}
+                variant="destructive"
+              />
               <CircleButton onPress={onAddSticker} />
-              <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync} />
+              <IconButton
+                icon="save-alt"
+                label="Guardar"
+                onPress={onSaveImageAsync}
+                variant="primary"
+              />
             </View>
           </View>
         ) : (
           <View style={styles.footerContainer}>
-            <Button
-              onPress={pickImageAsync}
-              label="Elige una foto"
-              theme="primary"
-            />
-            <Button
-              label="Usar esta foto"
-              onPress={() => setShowAppOptions(true)}
-            />
+            {selectedImage === undefined && (
+              <Text style={styles.selectionHint}>
+                Elige una foto de tu galería para empezar.
+              </Text>
+            )}
+            <View style={styles.selectionActionsCard}>
+              <Button
+                onPress={pickImageAsync}
+                label="Elige una foto"
+                theme="primary"
+              />
+              <Button
+                label="Usar esta foto"
+                onPress={() => setShowAppOptions(true)}
+              />
+            </View>
           </View>
         )}
 
@@ -135,18 +152,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    backgroundColor: "#15192e",
+    backgroundColor: "#E2E4E9",
   },
   imageContainer: {
     flex: 1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   footerContainer: {
-    flex: 1 / 3,
+    flex: 0.36,
+    width: "100%",
     alignItems: "center",
+    justifyContent: "center",
+    paddingHorizontal: 0,
+    paddingVertical: 16,
+  },
+  selectionHint: {
+    color: "#111111",
+    fontSize: 14,
+    marginBottom: 14,
+    textAlign: "center",
+  },
+  selectionActionsCard: {
+    width: "100%",
+    alignItems: "stretch",
+    paddingVertical: 10,
+    paddingHorizontal: 12,
+    borderWidth: 1,
+    borderColor: "#B5BBC8",
+    borderRadius: 18,
+    backgroundColor: "#001F3F",
   },
   optionsContainer: {
     position: "absolute",
-    bottom: 80,
+    bottom: 16,
+    paddingHorizontal: 8,
+    paddingVertical: 16,
+    borderRadius: 20,
+    backgroundColor: "#001F3F",
   },
   optionsRow: {
     alignItems: "center",

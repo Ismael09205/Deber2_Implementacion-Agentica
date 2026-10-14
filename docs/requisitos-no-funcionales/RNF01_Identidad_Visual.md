@@ -1,42 +1,19 @@
----
-name: epn-brand
-description: Usala siempre que crees o modifiques colores, estilos o pantallas de la aplicacion movil Deber2_IsmaelNarvaez.
----
+# Requisito de diseño: identidad visual EPN
 
-# Rol: Identidad visual EPN
+## Descripción
 
-## Objetivo
-Mantener una apariencia uniforme y agradable en toda la aplicacion movil, utilizando los colores definidos y respetando el estilo de los componentes existentes de React Native y Expo.
+La aplicación móvil `Deber2_IsmaelNarvaez` debe mantener una identidad visual coherente basada en la paleta de colores de referencia de la Escuela Politécnica Nacional (EPN).
 
-## Paleta de colores
+Esta identidad debe aplicarse de manera uniforme en todas las pantallas y componentes de la aplicación, garantizando una presentación visual consistente, una adecuada legibilidad del contenido y una diferenciación clara de los elementos interactivos.
 
-Fuente de referencia: https://demostemas.epn.edu.ec/estilosdesarrollo/colores.php
+## Criterios de cumplimiento
 
-Esta pagina se utiliza como referencia de colores, no como manual oficial de identidad institucional verificado.
+- **Uso de la paleta:** los elementos de la interfaz deben utilizar los colores de referencia de la EPN de acuerdo con su finalidad.
+- **Consistencia visual:** los componentes que cumplen funciones equivalentes deben mantener criterios de color y presentación uniformes en toda la aplicación.
+- **Legibilidad:** las combinaciones de colores deben proporcionar contraste suficiente para distinguir los textos, iconos y controles sobre sus respectivos fondos.
+- **Aplicación transversal:** la identidad visual debe mantenerse en fondos, encabezados, botones, menús, modales, campos y demás elementos de la interfaz.
+- **Continuidad del diseño:** las nuevas pantallas y las modificaciones de componentes existentes deben conservar la identidad visual establecida, evitando variaciones de color injustificadas.
 
-- **Encabezados y barras superiores:** `#001F3F`, texto blanco.
-- **Botones principales:** `#357CA5`, texto blanco.
-- **Acciones de eliminar y errores:** `#D33724`, texto blanco.
-- **Advertencia / Supletorio:** `#F7BF65`, texto `#111111`.
-- **Exito / Aprobado:** `#5AC594`, texto `#111111`.
-- **Fondo de pantalla:** `#E2E4E9`, texto `#111111`.
-- **Tarjetas, modales y campos:** `#FFFFFF`, texto `#111111`.
-- **Texto secundario sobre blanco:** `#5A6E82`.
-- **Bordes y separadores:** `#B5BBC8`. No usar para textos.
+## Verificación
 
-No usar texto blanco sobre `#3C8DBC`, `#008D4C` o `#DB8B0B`, ya que dificulta la lectura.
-
-## Reglas de diseño
-
-- Usar los colores definidos y mantener el mismo estilo en todas las pantallas.
-- Aplicar estas reglas a tabs, botones, campos, seleccion y previsualizacion de imagenes, ImagePicker y modales.
-- Mantener los textos faciles de leer y los botones faciles de identificar.
-- Mostrar los estados, como aprobado, supletorio o reprobado, mediante texto y color.
-- Reutilizar los componentes y estilos existentes siempre que sea posible.
-- Mantener los colores centralizados en el archivo de constantes del proyecto.
-- No inventar colores ni cambiar el funcionamiento de la aplicacion cuando solo se soliciten cambios visuales.
-- Si se necesita un color que no esta definido, consultar antes de agregarlo.
-
-## Alcance
-
-Esta skill guia a los agentes al crear o modificar la apariencia de la aplicacion `Deber2_IsmaelNarvaez`. Su funcion es mantener la identidad visual y la consistencia entre pantallas sin cambiar las funcionalidades existentes ni agregar complejidad innecesaria.
+El requisito se considera cumplido cuando las pantallas y los componentes de la aplicación mantienen una identidad visual consistente, utilizan adecuadamente la paleta de referencia y permiten identificar y leer claramente sus elementos.

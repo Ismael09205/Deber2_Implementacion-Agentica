@@ -22,14 +22,18 @@ export default function EmojiList({ onSelect, onCloseModal }: Props) {
       horizontal
       showsHorizontalScrollIndicator={Platform.OS === 'web'}
       data={emoji}
+      keyExtractor={(_, index) => `emoji-${index + 1}`}
       contentContainerStyle={styles.listContainer}
       renderItem={({ item, index }) => (
         <Pressable
+          accessibilityLabel={`Seleccionar emoji ${index + 1}`}
+          accessibilityRole="button"
           onPress={() => {
             onSelect(item);
             onCloseModal();
-          }}>
-          <Image source={item} key={index} style={styles.image} />
+          }}
+          style={styles.emojiButton}>
+          <Image source={item} contentFit="contain" style={styles.image} />
         </Pressable>
       )}
     />
@@ -38,16 +42,24 @@ export default function EmojiList({ onSelect, onCloseModal }: Props) {
 
 const styles = StyleSheet.create({
   listContainer: {
-    borderTopRightRadius: 10,
-    borderTopLeftRadius: 10,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+  },
+  emojiButton: {
+    width: 96,
+    height: 104,
+    marginRight: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: '#B5BBC8',
+    borderRadius: 14,
+    backgroundColor: '#E2E4E9',
   },
   image: {
-    width: 100,
-    height: 100,
-    marginRight: 20,
+    width: 80,
+    height: 80,
   },
 });
